@@ -1,0 +1,14 @@
+{% include 'shead.html' %}
+<div class="card-4 w-50 p-10 m-auto">
+    <form action="reject_leave_action" method="post">
+        <input type="hidden" name="leave_id" value="{{leave_id}}">
+        <input type="hidden" name="status" value="{{status}}">
+        <div>
+            <label for="reason">Enter Reason</label>
+            <textarea name="reason" class="w-100 p-10" id="reason"></textarea>
+        </div>
+        <div style="text-align:center;">
+            <input type="submit" value="submit">
+        </div>
+    </form>
+</div>

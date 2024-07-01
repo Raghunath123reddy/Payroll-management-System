@@ -1,0 +1,16 @@
+{% include'ahead.html' %}
+<div class="container">
+    <div class="card-2">
+        <form action="edit_departments_action" method="post">
+            <div class="card-title">Edit Departments</div>
+            <input type="hidden" name="department_id" value="{{department['_id']}}">
+            <div class="card-group-1">
+                <input type="text" id="department_name" class="form-input-1" value="{{department['department_name']}}" name="department_name" placeholder="enter department">
+            </div>
+            <div>
+                <input type="submit" class="card-input-1" value="update">
+            </div>
+            <div>{{message}}</div>
+        </form>
+    </div>
+</div>

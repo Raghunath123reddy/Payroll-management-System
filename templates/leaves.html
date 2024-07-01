@@ -1,0 +1,105 @@
+{% if session['role'] == 'supervisor' %}
+    {% include'shead.html' %}
+{% endif %}
+
+{% if session['role'] == 'admin' %}
+    {% include'ahead.html' %}
+{% endif %}
+
+{% if session['role'] == 'employee' %}
+    {% include 'ehead.html'%}
+{% endif %}
+
+<div class="row mt-10" style="height:90vh;overflow:auto">
+    {% if session['role'] == "employee" %}
+    <div class="w-30">
+        <form action="leaves_action" method="post">
+            <div class="card-title">Leaves Details</div>
+            <div class="card-group-1">
+                <label for="start_date">Start_date</label><br>
+                <input type="date" id="start_date" class="form-input-1" name="start_date"
+                    placeholder="enter start_date">
+            </div>
+            <div class="card-group-1">
+                <label for="end_date">End_date</label><br>
+                <input type="date" id="end_date" class="form-input-1" name="end_date" placeholder="enter end_date">
+            </div>
+            <div class="card-group-1">
+                <label for="reason">Reason</label><br>
+                <textarea id="reason" name="reason" class="form-input-1" placeholder="enter reason"></textarea>
+            </div>
+            <div>
+                <input type="submit" class="card-input-1" value="Apply">
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    <div class="w-60">
+    <div class="row">
+    {% for leave in leaves %}
+    {% set employee = get_employee_by_employee_id(leave['employee_id']) %}
+    <div class="w-100 card-4 mt-15 p-10">
+        <div class="row">
+            <div class="w-25">
+                <div class="place">start_date</div>
+                <div class="place1">{{leave['start_date'].strftime("%d-%m-%Y")}}</div>
+            </div>
+            <div class="w-25">
+                <div class="place">End_date</div>
+                <div class="place1">{{leave['end_date'].strftime("%d-%m-%Y")}}</div>
+            </div>
+            <div class="w-25">
+                <div class="place">Date</div>
+                <div class="place1">{{leave['date'].strftime("%d-%m-%Y")}}</div>
+            </div>
+            <div class="w-25">
+                <div class="place">status</div>
+                <div class="place1">{{leave['status']}}</div>
+            </div>
+            <div class="w-50">
+                <div class="place">number of days</div>
+                <div class="place1">{{leave['days']}}</div>
+            </div>
+            <div class="w-50">
+                <div class="place">number of hours</div>
+                <div class="place1">{{leave['hours']}}</div>
+            </div>
+            <div class="w-25">
+                <div class="place">employee_id</div>
+                <div class="place1">{{employee['employee_id']}}</div>
+            </div>
+            <div class="w-25">
+                <div class="place">name</div>
+                <div class="place1">{{employee['name']}}</div>
+            </div>
+            <div class="w-25">
+                <div class="place">email</div>
+                <div class="place1">{{employee['email']}}</div>
+            </div>
+            <div class="w-25">
+                <div class="place">phone</div>
+                <div class="place1">{{employee['phone']}}</div>
+            </div>
+            {% if 'reason' in leave %}
+            <div class="w-100 mt-5">
+                <div class="place">Reason</div>
+                <div class="place1" style="height: 100px;overflow: auto;">{{leave['reason']}}</div>
+            </div>
+            {% endif %}
+            {% if session['role'] == 'supervisor' %}
+                {% if leave['status']=='applied' %}
+                <div><a href="set_status?leave_id={{leave['_id']}}&status=Approved">Approve</a></div>
+                <div><a href="reject_leave?leave_id={{leave['_id']}}&status=Rejected">Reject</a></div>
+                {% endif %}
+            {% endif %}
+            {% if session['role'] == 'employee' %}
+                {% if leave['status']=='applied' %}
+                <div><a href="set_status?leave_id={{leave['_id']}}&status=Cancelled">Cancel</a></div>
+                {% endif %}
+            {% endif %}
+        </div>    
+    </div>
+    {% endfor %}
+</div>
+</div>
+</div>    

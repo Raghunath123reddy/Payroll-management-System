@@ -1,0 +1,413 @@
+*{
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0px;
+    padding: 0%;
+}
+.card-nav{
+    justify-content: space-between;
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    background-color: blanchedalmond;
+    width: 100%;
+}
+.card-head{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+}
+.card-title{
+    font-size: 20px;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+.card-title-first-letter{
+    color: rgb(109, 8, 204);
+    font-weight: bold;
+    font-size: 20px;
+}
+.card-text-1{
+    text-decoration: none;
+    color: black;
+}
+.card-text-2{
+    text-decoration: none;
+    color: black;
+}
+.card-text-3{
+    text-decoration: none;
+    color: black;
+}
+.card {
+    margin-top: 30px;
+    display: flex;
+}
+.card-item {
+    width: 50%;
+}
+.card-img{
+    display: block;
+    width: 80%;
+    margin: auto;
+    border-radius: 14px;
+}
+.card-heading {
+    font-size: 20px;
+    font-weight: bold;
+}
+.card-text{
+    margin-top: 5px;
+    font-size: 20px;
+    color: gray;
+    font-weight: 400;
+}
+.form-input {
+    display: block;
+    width: 80%;
+}
+.form-group{
+    position: relative;
+}
+.form-input {
+    font-size: 15px;
+    border: 2px solid lightgray;
+    padding: 20px;
+    padding-left: 40px;
+    margin-top: 20px;
+}
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-btn {
+    width: 40%;
+}
+.btn {
+    width: 100%;
+    padding: 20px 40px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    background-color: rgb(80, 19, 207);
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.card-nav-1{
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px; 
+    background-color: beige;
+    width: 100%;
+}
+.card-head-1{
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+}   
+.card-text-4{
+    text-decoration: none;
+    color: black;
+}
+.card-text-5{
+    text-decoration: none;
+    color: black;
+}
+.container{
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-left: 30px;
+}
+.card-2{
+    border: 2px solid lightgray;
+    width: 40%;
+    padding: 20px 20px;
+    margin-top: 50px;
+    margin: 10px;
+    border-radius: 14px;
+
+}
+.card-3{
+    border: 1px solid lightgray;
+    width: 40%;
+    padding: 20px 20px;
+    margin-top: 50px;
+    margin: 10px;
+    padding-right: 30px;
+}
+.card-title{
+    color: brown;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.card-group-1{
+    font-size: 20px;
+}
+.form-input-1{
+    width: 100%;
+    padding: 10px;
+    border-radius: 14px;
+    border: 2px solid lightgray;
+}
+.card-input-1{
+    width: 30%;
+    margin-left: 300px;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 14px;
+    border: 2px solid lightgray;
+}
+.port{
+    margin: 50px 50px;
+    display: flex;
+    gap: 20px;
+}
+.part-left{
+    width: 30%;
+    border: 1px solid lightgray;
+    border-radius: 14px;
+    
+}
+.part-right{
+    width: 70%;
+    
+}
+.input{
+    padding: 5px;
+    border-radius: 14px;
+
+}
+.port-1{
+    text-align: center;
+    font-size: 20px;
+}
+.form-input2{
+    width: 100%;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid lightgray;
+}
+.port-8{
+    padding: 5px;
+    margin-left: 100px;
+    border-color: blueviolet;
+    color: rgb(202, 178, 178);
+    background-color: chocolate;
+    border-radius: 14px;
+    border: none;
+    margin-left: 30px;
+}
+.port-1-1{
+    padding: 20px;
+}
+.input-text{
+    text-align: center;
+    font-size: 20px;
+}
+.form-group2{
+    margin-top: 10px;
+}
+.form-group3{
+    width: 50%;
+    margin: auto;
+}
+.mlr-20{
+    margin:0 20px;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.card-3{
+    position: sticky;
+    border-radius: 14px;
+    border: 2px solid lightgray;
+}
+.port-9{
+    width: 100%;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid lightgray;
+    color: rgb(247, 7, 7);
+}
+.part{
+    width: 30%;
+   display: flex;
+   gap: 20px;
+   
+}
+.input-text-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+}
+.text-center {
+    text-align: center;
+    background: red;
+}
+.row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.w-20 {
+    width: 20%;
+}
+.w-25 {
+    width: 25%;
+}
+.w-65 {
+    width: 65%;
+}
+.w-50 {
+    width: 50%;
+}
+.w-60{
+    width: 60%;
+}
+.w-30 {
+    width: 30%;
+}
+.card-4 {
+    border: 1px solid lightgray;
+    border-radius: 14px;
+}
+.w-70 {
+    width: 70%;
+}
+
+.card-5{
+    display: flex;
+}
+.p-20 {
+    padding: 20px;
+}
+.m-20{
+    margin: 20px;
+}
+.card-4-heading{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.item-title{
+    font-weight: 700;
+    font-size:20px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.mt-5{
+    margin-top: 5px;
+}
+.p-10{
+    padding: 10px;
+}
+.item-label{
+    font-size: 12px;
+    font-weight: 500px;
+}
+.m-50{
+    margin: 50px;
+}
+.card-btn{
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid lightgray;
+    padding: 10px;
+    border-radius: 14px;
+    color: rgb(232, 228, 228);
+    border-color: rgb(163, 163, 227);
+    background-color: rgb(71, 152, 228);
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.m-auto {
+    margin: auto;
+}
+.w-45 {
+    width: 45%;
+}
+.w-15{
+    width: 15%;
+}
+.w-60{
+    width: 60%;
+}
+.p-10{
+    padding: 10px;
+}
+.w-10{
+    width: 100px;
+}
+.card-6{
+    display: flex;
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+.w-100{
+    width: 100%;
+}
+.place{
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 10px;
+}
+.place1{
+    font-size: 14px;
+    font-weight: 600;
+}
+.place2{
+    text-align: center;
+}
+.mt-15{
+    margin-top: 15px;
+}
+.place-title{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 100px;
+    color: aqua;
+}
+.generate{
+    text-decoration: none;
+}
+.mt-30{
+    margin-top: 30px;
+}
+.m-5{
+    margin: 20px;
+}
+.m-auto {
+    margin-left: auto;
+    margin-right:auto;
+}
+.m-auto{
+    margin: 100px auto;
+}
+td {
+    padding:10px;
+}

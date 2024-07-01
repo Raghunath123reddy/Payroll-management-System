@@ -1,0 +1,95 @@
+{% if session['role'] == 'supervisor' %}
+    {% include'shead.html' %}
+{% endif %}
+
+{% if session['role'] == 'admin' %}
+    {% include'ahead.html' %}
+{% endif %}
+
+{% if session['role'] == 'employee' %}
+    {% include 'ehead.html'%}
+{% endif %}
+<div>
+    {% if session['role'] == 'supervisor' %}
+    <div class="row">
+        <div class=" place2 w-20"></div>
+        <div class=" place2 w-60">Paychecks</div>
+        <div class="w-20">
+            <a href="generate_pay_check?employee_id={{employee_id}}" class="generate">Generate Pay check</a>
+        </div>
+    </div>
+    {% endif %}
+    {% for paycheck in paychecks %}
+
+    <table border="1" class="w-60 m-5 mt-30 m-auto" style="border-collapse:collapse">
+        <tr>
+            <td>From Date</td>
+            <td>{{paycheck['from_date']}}</td>
+        </tr>
+        <tr>
+            <td>To Date</td>
+            <td>{{paycheck['to_date']}}</td>
+        </tr>
+        <tr>
+            <td>Total working days</td>
+            <td>{{paycheck['total_working_days']}}</td>
+        </tr>
+        <tr>
+            <td>Total leave days</td>
+            <td>{{paycheck['total_leave_days']}}</td>
+        </tr>
+        <tr>
+            <td>Total days</td>
+            <td>{{paycheck['total_days']}}</td>
+        </tr>
+        <tr>
+            <td>Total working hours</td>
+            <td>{{paycheck['total_working_hours']}}</td>
+        </tr>
+        <tr>
+            <td>Total leave hours</td>
+            <td>{{paycheck['total_leave_hours']}}</td>
+        </tr>
+        <tr>
+            <td>Total overtime hours</td>
+            <td>{{paycheck['total_overtime_hours']}}</td>
+        </tr>
+        <tr>
+            <td>Basic salary</td>
+            <td>$ {{paycheck['basic_salary']}}</td>
+        </tr>
+        <tr>
+            <td>State tax</td>
+            <td>$ {{paycheck['state_tax']}}</td>
+        </tr>
+        <tr>
+            <td>Income tax</td>
+            <td>$ {{paycheck['income_tax']}}</td>
+        </tr>
+        <tr>
+            <td>Health insurance</td>
+            <td>$ {{paycheck['health_insurance']}}</td>
+        </tr>
+        <tr>
+            <td>Food allows</td>
+            <td>$ {{paycheck['food_allows']}}</td>
+        </tr>
+        <tr>
+            <td>Travelling allows</td>
+            <td>$ {{paycheck['travelling_allows']}}</td>
+        </tr>
+        <tr>
+            <td>House rent allows</td>
+            <td>$ {{paycheck['house_rent_allows']}}</td>
+        </tr>
+        <tr>
+            <td>Bonus</td>
+            <td>$ {{paycheck['bonus']}}</td>
+        </tr>
+        <tr>
+            <td>Payable amount</td>
+            <td>$ {{paycheck['payable_amount']}}</td>
+        </tr>
+    </table>
+{% endfor %}
+</div>

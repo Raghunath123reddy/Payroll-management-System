@@ -1,0 +1,24 @@
+{% include'ahead.html' %}
+<div class="container">
+    <div class="card-2">
+        <form action="departments_action" method="post">
+            <div class="card-title">Add Departments</div>
+            <div class="card-group-1">
+                <label for="department_name">Department Name </label><br>
+                <input type="text" id="department_name" class="form-input-1" name="department_name" placeholder="enter department">
+            </div>
+            <div>
+                <input type="submit" class="card-input-1" value="Add">
+            </div>
+            <div>{{message}}</div>
+        </form>
+    </div>
+    <div class="card-3">
+        <ol>
+            {% for department in departments %}
+            <li>{{department['department_name']}}</li>
+            <div class="w-30"><a href="edit_department?department_id={{department['_id']}}">edit</a></div>
+            {% endfor %}
+        </ol>
+    </div>
+</div>

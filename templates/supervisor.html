@@ -1,0 +1,115 @@
+{% include'ahead.html' %}
+<div class="port">
+    <div class="part-left">
+        <form action="add_supervisor_action" method="post">
+                <div class="port-1">Add Supervisor</div>
+                <div class="port-1-1">
+                    <div class="form-group2">
+                        <label>Department</label>
+                        <select name="department_id" class="form-input2" required>
+                            <option value="">Choose departments</option>
+                            {% for department in departments %}
+                            <option value="{{department['_id']}}">{{department['department_name']}}</option>
+                            {% endfor %}
+                         </select>
+                    </div>
+                    <div class="form-group2">
+                        <label for="ssn">SSN</label>
+                        <input type="text" name="ssn" class="form-input2" id="ssn" required placeholder="enter SSN">
+                    </div>
+                    <div class="form-group2">
+                        <label for="name">First Name</label>
+                        <input type="text" name="name" class="form-input2" id="name" required placeholder="enter first name">
+                    </div>
+                    <div class="form-group2">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" class="form-input2" id="last_name" required placeholder="enter last name">
+                    </div>
+                    <div class="form-group2">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-input2" id="email" required placeholder="enter email">
+                    </div>
+                    <div class="form-group2">
+                        <label for="password">password</label>
+                        <input type="password" name="password" class="form-input2" id="password" required placeholder="enter password">
+                    </div>
+                    <div class="form-group2">
+                        <label for="password2">confirm password</label>
+                        <input type="password" name="password2" class="form-input2" id="password2" required placeholder="enter confirm password">
+                    </div>
+                    <div class="form-group2">
+                        <label for="phone">Phone</label>
+                        <input type="number" name="phone" class="form-input2" id="phone" required placeholder="enter phone">
+                    </div>
+                    <div class="form-group2">
+                        <label for="city">City</label>
+                        <input type="text" name="city" class="form-input2" id="city" required placeholder="enter city">
+                    </div>
+                    <div class="form-group2">
+                        <label for="state">State</label>
+                        <input type="text" name="state" class="form-input2" id="state" required placeholder="enter state">
+                    </div>
+                    <div class="form-group2">
+                        <label for="zipcode">Zipcode</label>
+                        <input type="text" name="zipcode" class="form-input2" id="zipcode" required placeholder="enter zipcode">
+                    </div>
+                    <div class="form-group2">
+                        <label for="experience">Experience</label>
+                        <textarea name="experience" class="form-input2" id="experience"></textarea>
+                    </div>
+                    <div class="form-group2">
+                        <input type="submit" class="port-8" value="Add Supervisor">
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="part-right"> 
+        <form action="supervisor">
+            <div class="input-text">
+                <label>departments: </label>
+            </div>
+            <div class="">
+                <select name="department_id" class="form-input2" required onchange="this.form.submit()">
+                    <option value="">Choose departments</option>
+                    {% for department in departments %}
+                    <option value="{{department['_id']}}" {% if str(department["_id"]) == str(department_id) %} selected {% endif %}>
+                        {{department['department_name']}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+        </form>
+        <div class="card2-text">supervisors List</div>
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                    <th>Supervisors Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Experience</th>
+                    <th>Department Name</th>
+                    <th>Address</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for supervisor in supervisors %}
+                {% set departments = get_departments_by_department_id(supervisor['department_id']) %}
+                    <tr>
+                        <td>{{supervisor['name']}} {{supervisor['last_name']}} </td>
+                        <td>{{supervisor['email']}}</td>
+                        <td>{{supervisor['phone']}}</td>
+                        <td>{{supervisor['experience']}}</td>
+                        <td>{{departments['department_name']}}</td>
+                        <td>
+                            <div>{{supervisor['city']}}, {{supervisor['state']}} - {{supervisor['zipcode']}}</div>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,161 @@
+{% include'shead.html' %}
+<div class="card-4 w-70 p-20 m-auto">
+    <form class="generate_pay_check" method="get">
+         <input type="hidden" name="employee_id" value="{{employee_id}}">
+        <div class="row">
+            <div>
+                <label for="from_date">From date</label>
+                <input type="date" name="from_date" value="{{from_date}}" id="from_date" placeholder="enter from_date">
+            </div>
+            <div>
+                <label for="to_date">To date </label>
+                <input type="date" name="to_date" id="to_date" value="{{to_date}}" placeholder="enter to_date">
+            </div>
+            <div>
+                 <input type="submit" value="Generate">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="p-20">
+    <div class="row">
+        <div class="w-50">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Working Hours</th>
+                        <th>Over Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for date in dates %}
+                        {% set transaction = get_transaction_by_date_and_employee_id(date, employee_id) %}
+                        {% if transaction!=None %}
+                        <tr>
+                            <td>{{date}}</td>
+                            <td>{{transaction["clock_in_date_time"].strftime("%I:%M %p")}}</td>
+                            <td>{{transaction["clock_out_date_time"].strftime("%I:%M %p")}}</td>
+                            <td>{{transaction["total_hours"]}} hours</td>
+                            <td>{{transaction["over_time"]}} hours</td>
+                        </tr>
+                        {% else %}
+                            {% set leave = get_leave_by_date_and_employee_id(date, employee_id) %}
+                            {% if leave!=None %}
+                                <tr>
+                                    <td>{{date}}</td>
+                                    <td colspan="4" class="text-center">Leave from {{leave['start_date'].strftime("%d-%m-%Y")}} to {{leave['end_date'].strftime("%d-%m-%Y")}}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td>{{date}}</td>
+                                    <td colspan="4" class="text-center">Not Working Day</td>
+                                </tr>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="w-50">
+            <div class="row">
+                <div class="w-30 mt-5">
+                    <div class="item-label">Total Working Days</div>
+                    <div class="item-text">{{total_working_days}}</div>
+                </div>
+                <div class="w-30 mt-5">
+                    <div class="item-label">Total Leave Days</div>
+                    <div class="item-text">{{total_leave_days}}</div>
+                </div>
+                <div class="w-30 mt-5">
+                    <div class="item-label">Total Days</div>
+                    <div class="item-text">{{total_days}}</div>
+                </div>
+                <div class="w-30 mt-5">
+                    <div class="item-label">Total Working Hours</div>
+                    <div class="item-text">{{total_working_hours}}</div>
+                </div>
+                <div class="w-30 mt-5">
+                    <div class="item-label">Total Leave Hours</div>
+                    <div class="item-text">{{total_leave_hours}}</div>
+                </div>
+                <div class="w-30 mt-5">
+                    <div class="item-label">Over time hours</div>
+                    <div class="item-text">{{total_overtime_hours}}</div>
+                </div>
+            </div>
+            <form action="generate_pay_check_action" method="post">
+                <input type="hidden" name="employee_id" value="{{employee_id}}">
+                <input type="hidden" name="from_date" value="{{from_date}}">
+                <input type="hidden" name="to_date" value="{{to_date}}">
+                <input type="hidden" name="total_working_days" value="{{total_working_days}}">
+                <input type="hidden" name="total_leave_days" value="{{total_leave_days}}">
+                <input type="hidden" name="total_days" value="{{total_days}}">
+                <input type="hidden" name="total_working_hours" value="{{total_working_hours}}">
+                <input type="hidden" name="total_leave_hours" value="{{total_leave_hours}}">
+                <input type="hidden" name="total_overtime_hours" value="{{total_overtime_hours}}">
+                <input type="hidden" name="basic_salary" value="{{basic_salary}}">
+                <input type="hidden" name="state_tax" value="{{state_tax}}">
+                <input type="hidden" name="income_tax" value="{{income_tax}}">
+                <input type="hidden" name="health_insurance" value="{{contract['health_insurance']}}">
+                <input type="hidden" name="food_allows" value="{{contract['food_allows']}}">
+                <input type="hidden" name="travelling_allows" value="{{contract['travelling_allows']}}">
+                <input type="hidden" name="house_rent_allows" value="{{contract['house_rent_allows']}}">
+                <input type="hidden" name="payable_amount" value="{{payable_amount}}">
+                {% if int(basic_salary)>0 %}
+                <table border="1" class="w-100 mt-20">
+                    <tr>
+                        <td>Basic Salary </td>
+                        <td>$ {{round(basic_salary,2)}}</td>
+                    </tr>
+                    <tr>
+                        <td>State Tax </td>
+                        <td>$ {{round(state_tax,2)}}</td>
+                    </tr>
+                     <tr>
+                        <td>Income Tax </td>
+                        <td>$ {{round(income_tax,2)}}</td>
+                    </tr>
+                    <tr>
+                        <td>Health Insurance </td>
+                        <td>$ {{contract['health_insurance']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Food Allowance </td>
+                        <td>$ {{contract['food_allows']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Travelling Allowance</td>
+                        <td>$ {{contract['travelling_allows']}}</td>
+                    </tr>
+                    <tr>
+                        <td>House Rent Allowance</td>
+                        <td>$ {{contract['house_rent_allows']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Payable Salary</td>
+                        <td>$ {{round(payable_amount,2)}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bonus</td>
+                        <td><input type="number" class="w-100" name="bonus" value="0" placeholder="Enter bonus"></td>
+                    </tr>
+                </table>
+
+                <div class="row mt-5">
+                    <div class="w-30"></div>
+                    <div class="w-30"></div>
+                    <div class="w-30">
+                        <input type="submit" value="Generate Pay Check">
+                    </div>
+                </div>
+                {% endif %}
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+{% include'shead.html' %}
+<div class="card-4 w-60 p-10 m-auto">
+    <form action="add_contract_action" method="post" class="row">
+        <input type="hidden" name="employee_id" value="{{employee_id}}">
+        {% if employee["wage_type"] == 'hourly' %}
+        <input type="hidden" name="monthly_salary" value="0">
+        <div class="form-group2 w-45">
+            <label for="pay_per_hour">Pay per hour</label>
+            <input type="number" name="pay_per_hour" class="form-input2" id="Pay_per_hour" placeholder="enter pay_per_hour">
+        </div>
+        {% endif %}
+        <div class="form-group2 w-45">
+            <label for="over_time_pay_per_hour">over time pay per hour</label>
+            <input type="number" name="over_time_pay_per_hour" class="form-input2" id="over_time_pay_per_hour" placeholder="enter over_time_pay_per_hour">
+        </div>
+        <div class="form-group2 w-45">
+            <label for="food_allows">Food allows</label>
+            <input type="number" name="food_allows" class="form-input2" id="food_allows" placeholder="enter food_allows">
+        </div>
+        <div class="form-group2 w-45">
+            <label for="travelling_allows">Travelling allows</label>
+            <input type="number" id="travelling_allows" name="travelling_allows" class="form-input2" placeholder="enter travelling_allows">
+        </div>
+        <div class="form-group2 w-45">
+            <label for="house_rent_allows">House rent allows</label>
+            <input type="number" name="house_rent_allows" class="form-input2" id="house_rent_allows" placeholder="enter house_rent_allows">
+        </div>
+        <div class="form-group2 w-45">
+            <label for="health_insurance">Health insurance</label>
+            <input type="number" name="health_insurance" class="form-input2" id="health_insurance" placeholder="enter health_insurance">
+        </div>
+        <div class="form-group2 w-45">
+            <label for="state_tax">State tax</label>
+            <input type="number" name="state_tax" min="0" max="100" class="form-input2" id="state_tax" placeholder="enter state_tax">
+        </div>
+        {% if employee["wage_type"] == 'monthly' %}
+        <input type="hidden" name="pay_per_hour" value="0">
+        <div class="form-group2 w-45">
+            <label for="monthly_salary">Monthly salary</label>
+            <input type="number" name="monthly_salary" class="form-input2" id="monthly_salary" placeholder="enter monthly_salary">
+        </div>
+        {% endif %}
+        <div class="form-group2 w-45">
+            <label for="income_tax">Income tax</label>
+            <input type="number" name="income_tax" min="0" max="100" class="form-input2" id="income_tax" placeholder="enter income_tax">
+        </div>
+        <div class="form-group2 w-45">
+            <input type="submit" class="port-9 " value="Add contract">
+        </div>
+    </form>
+</div>
